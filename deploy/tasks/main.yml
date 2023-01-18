@@ -1,0 +1,13 @@
+- name: Clone a repo with git directory
+  ansible.builtin.git:
+    repo: https://github.com/vishal221/ansible-roles-demo.git
+    dest: /home/ubuntu/birthdateflask/
+
+# - name: running docker compose
+#   shell: docker-compose -f /home/ubuntu/birthdateflask/APrimeAge/docker-compose.yaml up -d
+
+- name: deploy Docker Compose stack
+  community.docker.docker_compose:
+    project_src: /home/ubuntu/birthdateflask/APrimeAge/
+    files:
+    - docker-compose.yaml
